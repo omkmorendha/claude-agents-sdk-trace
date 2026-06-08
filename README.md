@@ -46,8 +46,10 @@ notes that back it) lives in [`SPEC.md`](./SPEC.md).
 
 - Python ≥ 3.10
 - [`uv`](https://docs.astral.sh/uv/)
-- An Anthropic API key (`ANTHROPIC_API_KEY`) — the SDK drives the Claude Code
-  CLI under the hood.
+- Claude Code logged in with your Claude Max / subscription account. The runner
+  deliberately strips inherited `ANTHROPIC_API_KEY` / `ANTHROPIC_AUTH_TOKEN`
+  variables before starting the SDK so the Claude Code CLI uses subscription
+  auth instead of API-key auth.
 
 ## Setup
 
@@ -95,10 +97,7 @@ Built:
 
 - uv project scaffolding, `claude-agent-sdk` 0.2.93 pinned.
 - [`SPEC.md`](./SPEC.md) — complete v0 design.
-
-In progress (per spec):
-
-- `tracer/` package — span types, async-queue writer, hooks, Markdown renderer.
+- `tracer/` package — async-queue writer, hooks, Markdown renderer.
 - `tools.py`, `agent.py`, `render.py`.
 
 Deferred (not v0): batch runner over a task set, per-task success/failure
